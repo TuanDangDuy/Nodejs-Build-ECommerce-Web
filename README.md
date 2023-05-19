@@ -5,4 +5,4 @@ Technologies in use
 - mongoose
 - dotenv
 - body-parser
-- Methods: GET/POST/PUT/PATCH
+- Methods: GET/POST/PUT/DELETE
