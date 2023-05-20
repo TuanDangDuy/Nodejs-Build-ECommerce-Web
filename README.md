@@ -6,3 +6,6 @@ Technologies in use
 - dotenv
 - body-parser
 - Methods: GET/POST/PUT/DELETE
+
+
+INPROGRESS...
