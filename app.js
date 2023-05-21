@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const productsRouter = require('./routes/productsRoute')
 const categoriesRouter = require('./routes/categoriesRoute')
+const usersRouter = require('./routes/usersRoute')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(morgan('tiny'))
 //Routers
 app.use(`${api}/products`, productsRouter)
 app.use(`${api}/categories`, categoriesRouter)
+app.use(`${api}/users`, usersRouter)
 
 
 

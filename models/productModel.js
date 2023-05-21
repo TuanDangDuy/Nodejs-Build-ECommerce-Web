@@ -57,4 +57,13 @@ const ProductSchema = new mongoose.Schema({
     }
 })
 
+//bỏ dấu _ trong _id
+ProductSchema.virtual('id').get(() => {
+    return this._id.toHexString()
+})
+
+ProductSchema.set('toJSON', {
+    virtuals: true
+})
+
 module.exports = mongoose.model('Product', ProductSchema)
