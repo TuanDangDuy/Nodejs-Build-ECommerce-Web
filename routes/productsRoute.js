@@ -28,6 +28,8 @@ router.get('/', async (req, res) => {
     res.send(productList)
 })
 
+
+// GET ID
 router.get('/:id', async (req, res) => {
     const product = await Product.findById(req.params.id).populate('category')   //id trong dòng này là id của products
     console.log(Product)
@@ -37,6 +39,8 @@ router.get('/:id', async (req, res) => {
     res.send(product)
 })
 
+
+// POST
 router.post('/', async (req, res) => {
     const category = await Category.findById(req.body.category)
     if(!category) {
@@ -64,6 +68,8 @@ router.post('/', async (req, res) => {
     return res.status(200).send(product)
 })
 
+
+// PUT ID
 router.put('/:id', async (req, res) => {
     if(!mongoose.isValidObjectId(req.params.id)) {
         res.status(400).send('Invalid Product ID')
@@ -96,6 +102,8 @@ router.put('/:id', async (req, res) => {
     res.send(product)
 })
 
+
+// DELETE ID
 router.delete('/:id', async (req, res) => {
     Product.findByIdAndRemove(req.params.id)
         .then((product) => {
@@ -111,6 +119,8 @@ router.delete('/:id', async (req, res) => {
 
 })
 
+
+// GET
 //đếm tổng số sản phẩm
 router.get('/get/count', async (req, res) => {
     const productCount = await Product.countDocuments((count) => count)

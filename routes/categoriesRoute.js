@@ -3,6 +3,7 @@ const router = express.Router()
 const Category = require('../models/categoryModel')
 
 
+// GET ALL
 router.get('/', async (req, res) => {
     const categoryList = await Category.find({})
 
@@ -12,6 +13,8 @@ router.get('/', async (req, res) => {
     res.status(200).send(categoryList)
 })
 
+
+// GET ID
 router.get('/:id', async (req, res) => {
      const category = await Category.findById(req.params.id)
      if(!category) {
@@ -20,6 +23,8 @@ router.get('/:id', async (req, res) => {
      res.status(200).send(category)
 })
 
+
+// POST
 router.post('/', async (req, res) => {
     let category = new Category({
         name: req.body.name,
@@ -29,9 +34,12 @@ router.post('/', async (req, res) => {
     category = await category.save()
 
     if(!category) return res.status(404).send('The category cannot created')
+
     res.send(category)
 })
 
+
+// PUT ID
 router.put('/:id', async (req, res) => {
     const category = await Category.findByIdAndUpdate(
         req.params.id, 
@@ -47,6 +55,8 @@ router.put('/:id', async (req, res) => {
     res.send(category)
 })
 
+
+// DELETE ID
 router.delete('/:id', async (req, res) => {
     Category.findByIdAndRemove(req.params.id)
         .then((category) => {
